@@ -1,6 +1,5 @@
 package tokyo.ymr27.lifegame;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -11,7 +10,7 @@ public class GameView {
   private static final Random GENERATOR;
 
   static {
-    COLORS = new HashMap<String, String>();
+    COLORS = new HashMap<>();
     COLORS.put("ANSI_RESET" , "\u001B[0m");
     COLORS.put("ANSI_BLACK" , "\u001B[30m");
     COLORS.put("ANSI_RED" , "\u001B[31m");
@@ -30,13 +29,13 @@ public class GameView {
   private int numRows;
   private int numCols;
 
-  public GameView(int numRows, int numCols) {
+  GameView(int numRows, int numCols) {
     this.numRows = numRows;
     this.numCols = numCols;
   }
 
   public void printField(GameField gameField, int duration_ms) {
-    System.out.print(ramdomColorCode());
+    System.out.print(randomColorCode());
     for (int row = 0; row < numRows; row++) {
       for (int col = 0; col < numCols; col++) {
         char c = gameField.isCellAlive(row, col) ? '*' : ' ';
@@ -48,10 +47,12 @@ public class GameView {
 
     try {
       Thread.sleep(duration_ms);
-    } catch (InterruptedException e) {}
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 
-  private String ramdomColorCode() {
+  private String randomColorCode() {
     return (String) COLOR_VALUES[GENERATOR.nextInt(COLOR_VALUES.length)];
   }
 }

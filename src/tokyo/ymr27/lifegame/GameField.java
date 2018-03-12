@@ -9,7 +9,7 @@ public class GameField {
   private final int numCols;
   private boolean[][] data;
 
-  public GameField(int numRows, int numCols) {
+  GameField(int numRows, int numCols) {
     this.numRows = numRows;
     this.numCols = numCols;
 
@@ -63,7 +63,7 @@ public class GameField {
             data[upRow][leftCol]
     );
 
-    return (int) isNeighborsAlive.stream().filter(b -> b == true).count();
+    return (int) isNeighborsAlive.stream().filter(b -> b).count();
   }
 
   private boolean getNextState(boolean prevState, int numNeighborsAlive) {

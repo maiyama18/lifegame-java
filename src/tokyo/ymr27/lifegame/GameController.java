@@ -4,11 +4,12 @@ public class GameController {
   private GameField gameField;
   private final GameView gameView;
 
-  public GameController(GameField gameField, GameView gameView) {
+  GameController(GameField gameField, GameView gameView) {
     this.gameField = gameField;
     this.gameView = gameView;
   }
 
+  @SuppressWarnings("InfiniteLoopStatement")
   public void start() {
     while (true) {
       gameView.printField(gameField, 1000);
